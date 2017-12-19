@@ -10,7 +10,7 @@ service.interceptors.resquest.use(function (config) {
    // 在发送请求之前做些什么
    // 请求数据之前为请求头添加token
   // if (store.getters.token) {
-  //   config.headers['X-Token'] = getToken() 
+  //    config.headers['X-Token'] = getToken()
   // }
   return config
 }, function (error) {
