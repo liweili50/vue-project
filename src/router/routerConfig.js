@@ -6,6 +6,7 @@ const routers = [{
   redirect: 'index',
   children: [{
     path: '/index',
+    meta: { title: '首页' },
     component: (resolve) => require(['@/views/index/main.vue'], resolve)
   }]
 },
