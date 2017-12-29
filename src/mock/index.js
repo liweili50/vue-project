@@ -1,7 +1,6 @@
 var Mock = require('mockjs')
-Mock.mock('/login/login', 'get', {
-  'name': '[@name](/user/name)()',
-  'age|1-100': 100,
-  'color': '[@color](/user/color)'
+Mock.mock(/\/login/, 'post', {
+  'token': 'admin',
+  'age|1-100': 100
 })
 export default Mock

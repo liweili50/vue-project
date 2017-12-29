@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Routers from './routerConfig.js'
+import Routers from './routers.js'
 import Util from '../utils/index'
 Vue.use(Router)
 
@@ -10,17 +10,23 @@ const RouterConfig = {
 }
 
 const router = new Router(RouterConfig)
+const whiteList = ['/login'];
 
 router.beforeEach((to, from, next) => {
   Util.title(to.meta.title)
-  if (to.matched.length === 0) {
-    router.push('error')
+  if (localStorage.getItem('token')) {
+    next()
+  } else {
+    if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
+      next()
+    } else {
+      next('/login') // 否则全部重定向到登录页
+    }
   }
-  next()
 })
 
 router.afterEach((to, from, next) => {
-  window.scrollTo(0, 0)
+  // window.scrollTo(0, 0)
 })
 
 export default router

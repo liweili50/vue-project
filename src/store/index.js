@@ -4,7 +4,9 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  count: 50
+  token: '',
+  user: {},
+  roles: []
 }
 const getters = {
   double: state => state.count * 2

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const service = axios.create({
-  baseUrl: 'process.env.BASE_API',
+  baseUrl: 'http://liweili/',
   timeout: 5000
 })
 // 添加请求拦截器
