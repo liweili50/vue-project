@@ -8,9 +8,10 @@ export function login (data) {
   })
 }
 
-export function logout () {
+export function getUserInfo (data) {
   return $http({
-    url: '/login/logout',
-    method: 'post'
+    url: '/getUserinfo',
+    method: 'get',
+    params: data
   })
 }

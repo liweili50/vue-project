@@ -22,7 +22,7 @@ export default {
       })
     },
     shut () {
-      this.$store.dispatch('increment')
+      // this.$store.dispatch('increment')
     }
   },
   computed: {}

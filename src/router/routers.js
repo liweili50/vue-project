@@ -39,5 +39,9 @@ const routers = [{
   path: '/example2',
   meta: { title: '例子2' },
   component: (resolve) => require(['@/views/examples/example2.vue'], resolve)
-}]
+},
+{
+  path: '*',
+  redirect: '/error' }
+]
 export default routers
