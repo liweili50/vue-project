@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>首页</h1>
+    <div>{{$store.state.permission.routers}}</div>
   </div>
 </template>
 <script>
@@ -16,9 +17,6 @@ export default {
       login().then(function (res) {
         console.log(res)
       })
-    },
-    shut () {
-      // this.$store.dispatch('increment')
     }
   },
   computed: {}

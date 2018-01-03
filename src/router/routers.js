@@ -1,5 +1,5 @@
 import index from '@/views/index/index.vue'
-const routers = [{
+export const constantRouters = [{
   path: '/',
   meta: { title: '首页' },
   component: index,
@@ -36,12 +36,21 @@ const routers = [{
   }]
 },
 {
-  path: '/example2',
-  meta: { title: '例子2' },
-  component: (resolve) => require(['@/views/examples/example2.vue'], resolve)
-},
-{
   path: '*',
   redirect: '/error' }
+];
+
+export default constantRouters
+
+export const asyncRouters = [
+  {
+    path: '/example2',
+    meta: { title: '例子' },
+    component: index,
+    children: [{
+      path: '/example2',
+      meta: { title: '权限例子' },
+      component: (resolve) => require(['@/views/examples/example2.vue'], resolve)
+    }]
+  }
 ]
-export default routers
