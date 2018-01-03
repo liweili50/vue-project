@@ -1,7 +1,6 @@
 var Mock = require('mockjs')
 Mock.mock(/\/login/, 'post', {
-  'token': 'admin1',
-  'age|1-100': 100
+  'token': 'admin'
 })
 
 Mock.mock(/\/getUserinfo/, 'get', function (config) {

@@ -30,6 +30,7 @@ router.beforeEach((to, from, next) => {
           next()
         }).catch(function () {
           console.log('验证失败，重新登陆！')
+          next('/login')
         })
       } else {
         console.log('信息已存在');
