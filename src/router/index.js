@@ -28,6 +28,8 @@ router.beforeEach((to, from, next) => {
           //   next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,replace: true so the navigation will not leave a history record
           // })
           next()
+        }).catch(function () {
+          console.log('验证失败，重新登陆！')
         })
       } else {
         console.log('信息已存在');

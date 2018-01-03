@@ -1,10 +1,6 @@
 <template>
   <div>
-    <h1>主要</h1>
-    <p>{{$store.state.a.count}}</p>
-
-    <button @click="add">+</button>
-    <button @click="shut">-</button>
+    <h1>首页</h1>
   </div>
 </template>
 <script>
