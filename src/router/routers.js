@@ -31,7 +31,7 @@ export const constantRouters = [{
   component: index,
   children: [{
     path: '/example1',
-    meta: { title: '例子1111' },
+    meta: { title: '例子' },
     component: (resolve) => require(['@/views/examples/example1.vue'], resolve)
   }]
 },
