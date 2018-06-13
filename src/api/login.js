@@ -7,7 +7,7 @@ export function login (data) {
     params: data
   })
 }
-
+// mmm
 export function getUserInfo (data) {
   return $http({
     url: '/getUserinfo',
