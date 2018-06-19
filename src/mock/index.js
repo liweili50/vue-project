@@ -5,7 +5,7 @@ Mock.mock(/\/login/, 'post', {
 
 Mock.mock(/\/getUserinfo/, 'get', function (config) {
   console.log(config)
-  if (config.url === '/getUserinfo?0=admin') {
+  if (config.url === '/getUserinfo') {
     return {
       'user': {
         'name': 'liwei',
