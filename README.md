@@ -1,4 +1,4 @@
-# my-app
+# vue-practice
 
 > A Vue.js project
 
