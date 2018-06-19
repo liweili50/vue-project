@@ -7,7 +7,7 @@ export function login (data) {
     data: data
   })
 }
-// mmm
+// 获取用户信息
 export function getUserInfo (data) {
   return $http({
     url: '/getUserinfo',
