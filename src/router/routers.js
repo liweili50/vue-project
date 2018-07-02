@@ -1,13 +1,17 @@
 import index from '@/views/index/index.vue'
 export const constantRouters = [{
   path: '/',
-  meta: { title: '首页' },
   component: index,
   redirect: 'index',
   children: [{
     path: '/index',
     meta: { title: '首页' },
     component: (resolve) => require(['@/views/index/main.vue'], resolve)
+  },
+  {
+    path: '/example1',
+    meta: { title: '例子' },
+    component: (resolve) => require(['@/views/examples/example1.vue'], resolve)
   }]
 },
 {
@@ -24,27 +28,14 @@ export const constantRouters = [{
   path: '/error',
   meta: { title: '错误' },
   component: (resolve) => require(['@/views/errorPages/404.vue'], resolve)
-},
-{
-  path: '/example1',
-  meta: { title: '例子' },
-  component: index,
-  children: [{
-    path: '/example1',
-    meta: { title: '例子' },
-    component: (resolve) => require(['@/views/examples/example1.vue'], resolve)
-  }]
-},
-{
-  path: '*',
-  redirect: '/error' }
+}
 ];
 
 export default constantRouters
 
 export const asyncRouters = [
   {
-    path: '/example2',
+    path: '/',
     meta: { title: '例子' },
     component: index,
     children: [{
@@ -52,5 +43,8 @@ export const asyncRouters = [
       meta: { title: '权限例子' },
       component: (resolve) => require(['@/views/examples/example2.vue'], resolve)
     }]
-  }
+  },
+  {
+    path: '*',
+    redirect: '/error' }
 ]
