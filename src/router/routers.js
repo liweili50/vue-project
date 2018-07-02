@@ -4,20 +4,15 @@ export const constantRouters = [{
   component: index,
   redirect: 'index',
   children: [{
-    path: '/index',
+    path: 'index',
     meta: { title: '首页' },
     component: (resolve) => require(['@/views/index/main.vue'], resolve)
   },
   {
-    path: '/example1',
+    path: 'example1',
     meta: { title: '例子' },
     component: (resolve) => require(['@/views/examples/example1.vue'], resolve)
   }]
-},
-{
-  path: '/index',
-  meta: { title: '首页' },
-  component: (resolve) => require(['@/views/index/index.vue'], resolve)
 },
 {
   path: '/login',
@@ -39,7 +34,7 @@ export const asyncRouters = [
     meta: { title: '例子' },
     component: index,
     children: [{
-      path: '/example2',
+      path: 'example2',
       meta: { title: '权限例子' },
       component: (resolve) => require(['@/views/examples/example2.vue'], resolve)
     }]

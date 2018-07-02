@@ -18,9 +18,12 @@ const actions = {
   GetUserInfo ({ commit, state }) {
     return new Promise((resolve, reject) => {
       getUserInfo(state.token).then(res => {
-        commit('SET_ROLES', res.data.role)
-        commit('SET_USER', res.data.user)
-        resolve(res)
+        console.log(res)
+        if (res.status === 200) {
+          commit('SET_ROLES', res.data.role)
+          commit('SET_USER', res.data.user)
+          resolve(res)
+        }
       }).catch(error => {
         reject(error)
       })
