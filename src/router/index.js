@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
           })
           next()
         }).catch(function () {
-          console.log('验证失败，重新登陆！')
+          console.log('拉取用户信息失败，重新登陆！')
           next('/login')
         })
       } else {

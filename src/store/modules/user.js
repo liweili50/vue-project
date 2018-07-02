@@ -18,7 +18,7 @@ const actions = {
   GetUserInfo ({ commit, state }) {
     return new Promise((resolve, reject) => {
       getUserInfo(state.token).then(res => {
-        console.log(res)
+//只验证成功返回用户信息的情况，其他全部返回false
         if (res.status === 200) {
           commit('SET_ROLES', res.data.role)
           commit('SET_USER', res.data.user)
