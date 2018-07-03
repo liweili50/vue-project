@@ -21,12 +21,15 @@ const actions = {
   GetUserInfo ({ commit, state }) {
     return new Promise((resolve, reject) => {
       getUserInfo(localStorage.getItem('token')).then(res => {
-      //只验证成功返回用户信息的情况，其他全部返回false
+      //只验证成功返回用户信息的情况，其他全部reject
         if (res.status === 200) {
+          // 拉取用户信息成功，验证token未失效，更新store里的token以及用户信息
           commit('SET_TOKEN', localStorage.getItem('token'))
           commit('SET_ROLES', res.data.role)
           commit('SET_USER', res.data.user)
           resolve(res)
+        } else {
+          reject(res)
         }
       }).catch(error => {
         reject(error)
