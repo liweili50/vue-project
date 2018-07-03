@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import store from '@/store/index'
 const service = axios.create({
   baseUrl: 'http://liweili/',
   timeout: 5000
@@ -7,11 +7,9 @@ const service = axios.create({
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么 配置token
-  // if (store.getters.token) {
-  //    config.headers['X-Token'] = getToken()
-  // }
-  config.headers['X-Token'] = 'admin'
-
+  if (store.getters.token) {
+    config.headers['X-Token'] = store.getters.token;
+  }
   return config;
 }, function (error) {
   // 对请求错误做些什么

@@ -35,7 +35,8 @@ export default {
       var _this = this
       login(data).then(function (res) {
         console.log(res)
-        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('token', res.data.token);
+        _this.$store.commit('SET_TOKEN', res.data.token)
         _this.$router.push({ path: '/' });
       })
     }
