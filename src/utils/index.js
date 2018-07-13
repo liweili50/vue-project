@@ -2,7 +2,7 @@ let util = {
 
 }
 util.title = function (title) {
-  title = title ? title + ' - Home' : 'vue project'
+  title = title || 'vue project'
   window.document.title = title
 }
 

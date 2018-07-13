@@ -20,12 +20,13 @@ const actions = {
   // 获取用户信息
   GetUserInfo ({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getUserInfo(localStorage.getItem('token')).then(res => {
+      getUserInfo({token: localStorage.getItem('token')}).then(res => {
+        console.log(res)
       //只验证成功返回用户信息的情况，其他全部reject
-        if (res.status === 200) {
+        if (res.data.code === 0) {
           // 拉取用户信息成功，验证token未失效，更新store里的token以及用户信息
           commit('SET_TOKEN', localStorage.getItem('token'))
-          commit('SET_ROLES', res.data.role)
+          commit('SET_ROLES', res.data.rolesList)
           commit('SET_USER', res.data.user)
           resolve(res)
         } else {

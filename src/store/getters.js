@@ -1,6 +1,10 @@
 const getters = {
+  token: state => state.user.token,
   roles: state => state.user.roles,
   addRouters: state => state.permission.routers,
-  token: state => state.user.token
+  userInfo: state => state.user.user,
+  editableTabs: state => state.tab.editableTabs,
+  editableTabsValue: state => state.tab.editableTabsValue,
+  currentRoute: state => state.tab.currentRoute
 }
 export default getters
