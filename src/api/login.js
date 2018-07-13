@@ -4,14 +4,14 @@ export function login (data) {
   return $http({
     url: '/login',
     method: 'post',
-    data: data
+    params: data
   })
 }
-// 获取用户信息
+// 获取用户权限信息
 export function getUserInfo (data) {
   return $http({
     url: '/getUserinfo',
     method: 'get',
-    data: data
+    params: data
   })
 }
