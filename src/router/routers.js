@@ -28,7 +28,7 @@ export default constantRouters
 
 export const asyncRouters = [{
   path: '/one',
-  meta: { title: '一级目录' },
+  meta: { title: '目录一' },
   component: index,
   children: [{
     path: 'video',
@@ -44,7 +44,7 @@ export const asyncRouters = [{
 },
 {
   path: '/two',
-  meta: { title: '一级目录' },
+  meta: { title: '目录二' },
   component: index,
   children: [
     {
