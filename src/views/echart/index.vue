@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>404</h1>
+    echart内容区域待开发
   </div>
 </template>

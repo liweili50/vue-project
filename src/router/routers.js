@@ -3,43 +3,65 @@ export const constantRouters = [{
   path: '/',
   component: index,
   redirect: 'index',
+  hidden: true,
   children: [{
     path: 'index',
-    meta: { title: '首页' },
+    meta: { title: '首页', name: '1' },
     component: (resolve) => require(['@/views/index/main.vue'], resolve)
-  },
-  {
-    path: 'example1',
-    meta: { title: '例子' },
-    component: (resolve) => require(['@/views/examples/example1.vue'], resolve)
   }]
 },
 {
   path: '/login',
-  meta: { title: '登陆' },
+  meta: { title: '登录' },
+  hidden: true,
   component: (resolve) => require(['@/views/login/index.vue'], resolve)
 },
 {
   path: '/error',
-  meta: { title: '错误' },
+  meta: { title: 'not found' },
+  hidden: true,
   component: (resolve) => require(['@/views/errorPages/404.vue'], resolve)
 }
 ];
 
 export default constantRouters
 
-export const asyncRouters = [
-  {
-    path: '/',
-    meta: { title: '例子' },
-    component: index,
-    children: [{
-      path: 'example2',
-      meta: { title: '权限例子' },
-      component: (resolve) => require(['@/views/examples/example2.vue'], resolve)
-    }]
+export const asyncRouters = [{
+  path: '/one',
+  meta: { title: '一级目录' },
+  component: index,
+  children: [{
+    path: 'video',
+    meta: { title: '视频页面', name: '2', role: ['admin'] },
+    component: (resolve) => require(['@/views/video/index.vue'], resolve)
   },
   {
-    path: '*',
-    redirect: '/error' }
+    path: 'echart',
+    meta: { title: '图表页面', name: '3', role: ['admin'] },
+    component: (resolve) => require(['@/views/echart/index.vue'], resolve)
+  }
+  ]
+},
+{
+  path: '/two',
+  meta: { title: '一级目录' },
+  component: index,
+  children: [
+    {
+      path: 'table',
+      meta: { title: '表格页面', name: '7', role: ['admin'] },
+      component: (resolve) => require(['@/views/table/index.vue'], resolve)
+    },
+    {
+      path: 'richText',
+      meta: { title: '富文本页面', name: '8', role: ['admin'] },
+      component: (resolve) => require(['@/views/richText/index.vue'], resolve)
+    }
+  ]
+},
+{
+  path: '*',
+  redirect: '/error',
+  hidden: true
+}
 ]
