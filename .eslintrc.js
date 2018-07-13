@@ -18,6 +18,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     // allow async-await
+    "quotes":'off',
     "semi":'off',
     "space-before-function-paren":'off',
     "spaced-comment":'off',
