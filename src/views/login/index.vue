@@ -32,8 +32,8 @@ import { login } from "../../api/login";
 export default {
   data() {
     return {
-      username: "",
-      password: "",
+      username: "admin",
+      password: "123456",
       checked: false
     };
   },
@@ -69,10 +69,7 @@ export default {
         console.log(res)
         if (res.data.code === 0) {
           if (_this.checked) {
-            let obj = {};
-            obj.username = _this.username;
-            obj.password = _this.password;
-            localStorage.setItem("user", JSON.stringify(obj));
+            localStorage.setItem("user", JSON.stringify(data));
           } else {
             localStorage.removeItem("user");
           }
