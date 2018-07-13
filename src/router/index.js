@@ -9,25 +9,25 @@ const RouterConfig = {
   mode: 'history',
   routes: Routers
 }
-
 const router = new Router(RouterConfig)
 const whiteList = ['/login'];
 
 router.beforeEach((to, from, next) => {
-  Util.title(to.meta.title)  // 设置title
   if (localStorage.getItem('token')) {
     if (to.path === '/login') {
       next()
     } else {
       if (store.getters.roles.length === 0) {
         store.dispatch('GetUserInfo').then(res => { // 拉取user_info
-          const roles = res.data.role
+          const roles = res.data.rolesList;
+          console.log(res)
           store.dispatch('GenerateRoutes', { roles }).then(() => { // 生成可访问的路由表
             router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
             next(to) // hack方法 确保addRoutes已完成
           })
           next()
-        }).catch(function () {
+        }).catch(function (error) {
+          console.log(error)
           console.log('拉取用户信息失败，重新登陆！')
           next('/login')
         })
@@ -45,6 +45,15 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from, next) => {
+  let routerObj = {};
+  routerObj.name = to.meta.name;
+  routerObj.title = to.meta.title;
+  routerObj.path = to.path;
+  if (routerObj.name) {
+    store.dispatch('addTab', routerObj)
+  }
+  Util.title(to.meta.title)  // 设置title
+  store.dispatch('getCurrentRoute', to)
 })
 
 export default router
