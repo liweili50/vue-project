@@ -50,10 +50,26 @@ router.afterEach((to, from, next) => {
   routerObj.title = to.meta.title;
   routerObj.path = to.path;
   if (routerObj.name) {
-    store.dispatch('addTab', routerObj)
+    store.dispatch('AddTab', routerObj);
+    // tab栏选择对应侧边栏
+    let pathArr = to.path.split('/');
+    if (pathArr.length <= 2) {
+      store.dispatch('SetActiveMenu', '0-0')
+    } else {
+      let firstHalf = '/' + pathArr[1];
+      let lastHalf = pathArr[2];
+      let allRouters = store.getters.addRouters;
+      let targetRouter = allRouters.find(function(router) {
+        return router.path === firstHalf
+      })
+      let targetIndex = allRouters.indexOf(targetRouter) + '-' + targetRouter.children.indexOf(targetRouter.children.find(function (router) {
+        return router.path === lastHalf
+      }))
+      store.dispatch('SetActiveMenu', targetIndex)
+    }
   }
   Util.title(to.meta.title)  // 设置title
-  store.dispatch('getCurrentRoute', to)
+  store.dispatch('GetCurrentRoute', to)
 })
 
 export default router

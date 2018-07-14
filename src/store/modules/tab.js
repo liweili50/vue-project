@@ -5,7 +5,8 @@ const state = {
     path: '/'
   }],
   editableTabsValue: '',
-  currentRoute: {}
+  currentRoute: {},
+  activeMenu: '0-0'
 }
 const mutations = {
   ADD_TAB: (state, router) => {
@@ -36,20 +37,26 @@ const mutations = {
   },
   GET_CURRENTROUTE: (state, route) => {
     state.currentRoute = route;
+  },
+  SET_ACTIVEMENU: (state, index) => {
+    state.activeMenu = index;
   }
 }
 const actions = {
-  addTab ({commit}, router) {
+  AddTab ({commit}, router) {
     commit('ADD_TAB', router);
   },
-  removeTab ({commit, state}, targetName) {
+  RemoveTab ({commit, state}, targetName) {
     return new Promise(function (resolve, reject) {
       commit('REMOVE_TAB', targetName);
       resolve(state.editableTabsValue)
     })
   },
-  getCurrentRoute ({commit}, route) {
+  GetCurrentRoute ({commit}, route) {
     commit('GET_CURRENTROUTE', route);
+  },
+  SetActiveMenu ({commit}, index) {
+    commit('SET_ACTIVEMENU', index);
   }
 }
 const tab = {

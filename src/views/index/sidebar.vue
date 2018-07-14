@@ -1,6 +1,6 @@
 <template>
     <div>
-      <el-menu class="el-menu-vertical-demo" :collapse="isCollapse">
+      <el-menu class="el-menu-vertical-demo" :default-active="activeMenu" :collapse="isCollapse">
         <div class="menu-logo">
            <div class="menu-logo-content">
              <img v-show="!isCollapse" src="../../assets/images/logo.png" alt="logo">
@@ -29,6 +29,9 @@ export default {
   computed: {
     sideBarList: function() {
       return this.$store.getters.addRouters;
+    },
+    activeMenu: function () {
+      return this.$store.getters.activeMenu
     }
   },
   methods: {

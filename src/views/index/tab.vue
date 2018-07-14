@@ -34,22 +34,28 @@ export default {
         this.$store.state.editableTabsValue = newValue;
       }
     },
-    currentRoute: function () {
-      return this.$store.getters.currentRoute.matched.filter(item => item.meta.title !== undefined)
+    currentRoute: function() {
+      return this.$store.getters.currentRoute.matched.filter(
+        item => item.meta.title !== undefined
+      );
+    },
+    allRouters: function() {
+      return this.$store.getters.addRouters;
     }
   },
   methods: {
     removeTab(targetName) {
       let _this = this;
-      this.$store.dispatch("removeTab", targetName).then(function (res) {
-        let path = _this.editableTabs.find(function (item) {
-          return item.name === res
+      this.$store.dispatch("RemoveTab", targetName).then(function(res) {
+        let path = _this.editableTabs.find(function(item) {
+          return item.name === res;
         }).path;
-        _this.$router.push(path)
-      })
+        _this.$router.push(path);
+      });
     },
     handleClick(tab) {
-      this.$router.push(tab.$attrs.path);
+      let path = tab.$attrs.path;
+      this.$router.push(path);
     }
   }
 };
@@ -86,10 +92,10 @@ export default {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
-#tab-1 .el-icon-close{
+#tab-1 .el-icon-close {
   display: none;
 }
-.el-tabs--card>.el-tabs__header #tab-1.is-closable:hover {
+.el-tabs--card > .el-tabs__header #tab-1.is-closable:hover {
   padding: 0 20px;
 }
 </style>
