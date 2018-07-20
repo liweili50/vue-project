@@ -1,8 +1,8 @@
-import { constantRouters, asyncRouters } from '../../router/routers'
+import { constantRouters } from '../../router/routers'
 
 function hasPermission (roles, route) {
   if (route.meta && route.meta.role) {
-    return roles.some(role => route.meta.role.indexOf(role.menuId) >= 0)
+    return roles.some(role => route.meta.role.indexOf(role) >= 0)
   } else {
     return true
   }
@@ -27,18 +27,22 @@ const permission = {
   },
   mutations: {
     ADD_ROUTERS: (state, routers) => {
-      state.routers = constantRouters.concat(routers)
+      state.routers = constantRouters.concat(routers, [{
+        path: '*',
+        redirect: '/error',
+        hidden: true
+      }])
     }
   },
   actions: {
     GenerateRoutes ({commit}, data) {
       return new Promise(resolve => {
-        const { roles } = data
+        const { roles, menuList } = data
         let accessedRouters = [];
         if (roles.indexOf('admin') >= 0) {
-          accessedRouters = asyncRouters
+          accessedRouters = menuList
         } else {
-          accessedRouters = filterAsyncRouter(asyncRouters, roles)
+          accessedRouters = filterAsyncRouter(menuList, roles)
         }
         commit('ADD_ROUTERS', accessedRouters);
         resolve()
