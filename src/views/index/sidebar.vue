@@ -8,12 +8,12 @@
              <i class="el-icon-tickets" @click="menuCollaps"></i>
            </div>
         </div>
-        <el-submenu v-for="(item,index) in sideBarList" v-if="!item.hidden===true" :key="index" :index="index+''">
+        <el-submenu v-for="(item,index) in sideBarList" v-if="!item.hidden===true" :key="index" :index="item.path">
             <template slot="title" v-if="item.children" >
             <i v-show="isCollapse" class="el-icon-location"></i>
             <span slot="title">{{item.meta.title}}</span>
             </template>
-            <el-menu-item style="padding-left: 20px" v-for="(menu,i) in item.children" :index="index+'-'+i"  :key="i" @click="routerTo(item.path,menu.path)">{{menu.meta.title}}</el-menu-item>
+            <el-menu-item style="padding-left: 20px" v-for="(menu,i) in item.children" :index="item.path+'/'+menu.path"  :key="i" @click="routerTo(item.path,menu.path)">{{menu.meta.title}}</el-menu-item>
         </el-submenu>
       </el-menu>
     </div>
@@ -31,7 +31,7 @@ export default {
       return this.$store.getters.addRouters;
     },
     activeMenu: function () {
-      return this.$store.getters.activeMenu
+      return this.$store.getters.currentRoute.path
     }
   },
   methods: {

@@ -5,8 +5,7 @@ const state = {
     path: '/'
   }],
   editableTabsValue: '',
-  currentRoute: {},
-  activeMenu: '0-0'
+  currentRoute: {}
 }
 const mutations = {
   ADD_TAB: (state, router) => {
@@ -54,9 +53,6 @@ const actions = {
   },
   GetCurrentRoute ({commit}, route) {
     commit('GET_CURRENTROUTE', route);
-  },
-  SetActiveMenu ({commit}, index) {
-    commit('SET_ACTIVEMENU', index);
   }
 }
 const tab = {
