@@ -5,7 +5,6 @@ const getters = {
   userInfo: state => state.user.user,
   editableTabs: state => state.tab.editableTabs,
   editableTabsValue: state => state.tab.editableTabsValue,
-  currentRoute: state => state.tab.currentRoute,
-  activeMenu: state => state.tab.activeMenu
+  currentRoute: state => state.tab.currentRoute
 }
 export default getters
