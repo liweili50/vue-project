@@ -21,8 +21,6 @@ router.beforeEach((to, from, next) => {
         store.dispatch('GetUserInfo').then(res => { // 拉取user_info
           const roles = res.data.rolesList;
           const menuList = formatRoutes(res.data.menuList)
-          console.log(res);
-          console.log(menuList)
           store.dispatch('GenerateRoutes', { roles, menuList }).then(() => { // 生成可访问的路由表
             router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
             next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
