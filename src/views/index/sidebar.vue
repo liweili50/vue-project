@@ -1,6 +1,5 @@
 <template>
-    <div>
-      <el-menu class="el-menu-vertical-demo" :default-active="activeMenu" :collapse="isCollapse">
+      <el-menu class="app-left" :default-active="activeMenu" :collapse="isCollapse">
         <div class="menu-logo">
            <div class="menu-logo-content">
              <img v-show="!isCollapse" src="../../assets/images/logo.png" alt="logo">
@@ -16,7 +15,6 @@
             <el-menu-item style="padding-left: 20px" v-for="(menu,i) in item.children" :index="item.path+'/'+menu.path"  :key="i" @click="routerTo(item.path,menu.path)">{{menu.meta.title}}</el-menu-item>
         </el-submenu>
       </el-menu>
-    </div>
 </template>
 
 <script>
@@ -45,7 +43,7 @@ export default {
 };
 </script>
 <style>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
+.app-left:not(.el-menu--collapse) {
   width: 220px;
 }
 .el-menu {

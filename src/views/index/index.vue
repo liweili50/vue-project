@@ -1,14 +1,12 @@
 <template>
  <div class="app-wrap">
-  <div class="app-left">
-    <sidebar/>
-  </div>
+  <sidebar/>
   <div class="app-right">
     <div class="app-right-header">
       <top/>
+      <tab/>
     </div>
-    <tab/>
-    <div class="app-right-view">
+    <div class="app-router-view">
       <router-view/>
     </div>
   </div>
@@ -23,11 +21,6 @@ export default {
     sidebar,
     top,
     tab
-  },
-  data() {
-    return {
-      isCollapse: false
-    };
   }
 };
 </script>
@@ -37,34 +30,39 @@ export default {
   height: 100%;
   position: relative;
   box-sizing: border-box;
-  background-color: #f8f8f8;
+  background-color: hsl(0, 0%, 97%);
+  display: table;
+  table-layout: fixed;
 }
-
-.app-left {
+.app-wrap .app-left,.app-wrap .app-right {
+  display: table-cell;
   height: 100%;
-  background-color: #f8f8f8;
-  float: left;
-  z-index: 10;
+  box-sizing: border-box;
+  vertical-align: top;
+  position: relative;
 }
 .app-right {
-  box-sizing: border-box;
-  overflow: hidden;
+  width: 100%;
 }
 .app-right-header {
   width: 100%;
-  height: 80px;
-  background-color: #4a90e2;
+  height: 160px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
 }
-.app-right-view {
-  width: 100%;
-  background-color: #fff;
-}
-.app-right-view > div {
+.app-router-view {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding: 20px;
-  min-height: 600px;
+  padding: 180px 20px 20px;
+  background-color: #fff;
+}
+.app-router-view > div {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 </style>
 
