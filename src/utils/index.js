@@ -16,33 +16,32 @@ export function validatenull(val) {
   return false;
 };
 
-export const formatRoutes = (aMenu) => {
-  const aRouter = []
-  aMenu.forEach(oMenu => {
+export const formatRoutes = (menuList) => {
+  const asyncRouter = []
+  menuList.forEach(menu => {
     const {
       path,
       component,
       meta,
       children
-    } = oMenu
+    } = menu
     if (!validatenull(component)) {
-      const oRouter = {
+      const router = {
         path: path,
-        component(resolve) {
+        component() {
           let componentPath = ''
           if (component === 'index') {
-            require(['../views/index/index.vue'], resolve)
-            return
+            return import('../views/index/index.vue')
           } else {
             componentPath = component
           }
-          require([`../${componentPath}index.vue`], resolve)
+          return import(`../${componentPath}index.vue`)
         },
         meta: meta,
         children: validatenull(children) ? [] : formatRoutes(children)
       }
-      aRouter.push(oRouter)
+      asyncRouter.push(router)
     }
   })
-  return aRouter
+  return asyncRouter
 }
