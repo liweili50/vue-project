@@ -32,6 +32,9 @@ export default {
       return this.$store.getters.currentRoute.path
     }
   },
+  created() {
+    console.log(this.sideBarList)
+  },
   methods: {
     menuCollaps() {
       this.isCollapse = !this.isCollapse;
