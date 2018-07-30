@@ -106,6 +106,7 @@ export default {
   position: relative;
   box-sizing: border-box;
   padding: 18px 0px;
+  background-color: #4a90e2;
 }
 .header-content {
   height: 44px;
@@ -146,7 +147,7 @@ export default {
   border: 1px solid #e4e7ed;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
   border-radius: 4px;
-  z-index: 1;
+  z-index: 10;
   padding: 10px 0;
 }
 .header-content-list li.triangle {
