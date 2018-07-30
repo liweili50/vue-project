@@ -3,7 +3,7 @@ import store from '@/store/index'
 import { Message } from 'element-ui'
 
 const service = axios.create({
-  baseURL: 'http://api/',
+  baseURL: '/api',
   timeout: 5000
 })
 // 添加请求拦截器
