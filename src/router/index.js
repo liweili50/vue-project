@@ -53,7 +53,6 @@ router.afterEach((to, from) => {
     store.dispatch('AddTab', routerObj);
   }
   formatTitle(to.meta.title)  // 设置title
-  store.dispatch('GetCurrentRoute', to)
 })
 
 export default router

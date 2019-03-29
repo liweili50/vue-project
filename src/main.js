@@ -7,9 +7,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from './router/index'
 import store from './store/index'
 
+import MyPlugin from './hightLight.js'
+
 import './mock'
 Vue.config.productionTip = false
 Vue.use(Element)
+Vue.use(MyPlugin)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

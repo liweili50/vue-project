@@ -4,7 +4,6 @@ const getters = {
   addRouters: state => state.permission.routers,
   userInfo: state => state.user.user,
   editableTabs: state => state.tab.editableTabs,
-  editableTabsValue: state => state.tab.editableTabsValue,
-  currentRoute: state => state.tab.currentRoute
+  editableTabsValue: state => state.tab.editableTabsValue
 }
 export default getters

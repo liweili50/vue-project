@@ -34,9 +34,6 @@ const mutations = {
     state.editableTabsValue = activeName;
     state.editableTabs = tabs.filter(tab => tab.name !== targetName);
   },
-  GET_CURRENTROUTE: (state, route) => {
-    state.currentRoute = route;
-  },
   SET_ACTIVEMENU: (state, index) => {
     state.activeMenu = index;
   }
@@ -50,9 +47,6 @@ const actions = {
       commit('REMOVE_TAB', targetName);
       resolve(state.editableTabsValue)
     })
-  },
-  GetCurrentRoute ({commit}, route) {
-    commit('GET_CURRENTROUTE', route);
   }
 }
 const tab = {

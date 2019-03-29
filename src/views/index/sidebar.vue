@@ -29,7 +29,7 @@ export default {
       return this.$store.getters.addRouters;
     },
     activeMenu: function () {
-      return this.$store.getters.currentRoute.path
+      return this.$route.path
     }
   },
   created() {

@@ -35,7 +35,7 @@ export default {
       }
     },
     currentRoute: function() {
-      return this.$store.getters.currentRoute.matched.filter(
+      return this.$route.matched.filter(
         item => item.meta.title !== undefined
       );
     },
